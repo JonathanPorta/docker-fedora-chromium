@@ -41,7 +41,6 @@ handle_args() {
   LATEST_REVISION=$(curl -s -S $LASTCHANGE_URL)
   TARGET_REVISION=505518
   CHROME_URL="https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2F$TARGET_REVISION%2Fchrome-linux.zip?alt=media"
-  echo_cyan "'${LATEST_REVISION}' is the latest available revision. Build '${TARGET_REVISION}' will be downloaded from: '${CHROME_URL}'."
 
   TEMP_DIRECTORY=/tmp
   CHROME_DOWNLOAD=$TEMP_DIRECTORY/chrome.zip
@@ -49,7 +48,7 @@ handle_args() {
 }
 
 install(){
-  echo_cyan "Grabbing download URL from '${CHROME_URL}' and downloading to '${CHROME_DOWNLOAD}'..."
+  echo_cyan "'${LATEST_REVISION}' is the latest available revision. Build '${TARGET_REVISION}' will be downloaded from: '${CHROME_URL}'..."
   #curl -L $CHROME_URL | jq .mediaLink | xargs curl -L -o $CHROME_DOWNLOAD
   curl -L -o $CHROME_DOWNLOAD $CHROME_URL
   echo_cyan "Done."
